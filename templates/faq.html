@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eye Disease Detection</title>
+    <link href="{{ url_for('static', filename='bulma.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='bootstrap.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap">
+    <script src="https://code.jquery.com/jquery-3.6.4.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #ffffff;
+            margin: 0;
+            padding: 0;
+        }
+
+        .navbar-brand {
+            font-weight: bold;
+            color: #fff;
+        }
+
+        .navbar-toggler-icon {
+            background-color: #333;
+        }
+
+        .img-fluid {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .section {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 50px 0;
+        }
+
+        .btn-primary {
+            background-color: #4CAF50;
+            border-color: #4CAF50;
+        }
+
+        .btn-primary:hover {
+            background-color: #45a049;
+            border-color: #45a049;
+        }
+
+        .footer {
+            background-color: #333;
+            color: #fff;
+        }
+
+        .navbar-brand {
+            font-weight: bold;
+            color: #fff;
+            font-size: 1.5rem;
+        }
+
+        .navbar-toggler {
+            border: none;
+            background-color: transparent !important;
+        }
+
+        .navbar-toggler:focus {
+            outline: none;
+        }
+
+        .navbar-toggler-icon {
+            background-color: #ffffff !important;
+            border-radius: 2px;
+        }
+
+        .navbar-nav .nav-link {
+            color: #ffffff;
+            font-weight: 600;
+        }
+
+        .navbar-nav .nav-link:hover {
+            color: #fff;
+        }
+
+        .navbar-collapse {
+            background-color: #2D4356;
+        }
+
+        .navbar-collapse .navbar-nav {
+            margin-top: 10px;
+        }
+
+        .navbar-collapse .navbar-nav .nav-item {
+            margin-right: 10px;
+        }
+
+        .navbar-collapse .navbar-nav .nav-item:last-child {
+            margin-right: 0;
+        }
+
+        .navbar-collapse .navbar-nav .nav-link {
+            padding: 8px 15px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .navbar-collapse .navbar-nav .nav-link:hover {
+            background-color: #20d57e;
+        }
+
+        nav.navbar {
+            background-color: #2D4356;
+        }
+
+        .card {
+            background-color: #fff;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin: 20px;
+        }
+        .faq-container {
+            margin: 50px auto;
+            max-width: 800px;
+        }
+        .faq-question {
+            cursor: pointer;
+            border: none;
+            background: none;
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            width: 100%;
+            text-align: left;
+            padding: 15px;
+            border-radius: 10px;
+            transition: background 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .faq-answer {
+            display: none;
+            padding: 15px;
+            border-radius: 10px;
+            background-color: #fff;
+            margin-bottom: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .faq-question.active {
+            background-color: #fff;
+        }
+        .dropdown-icon {
+            transition: transform 0.3s ease;
+        }
+        .btn-custom {
+            background-color: #46A7FE;
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            padding: 6px 12px;
+            font-size: 16px;
+            font-weight: 400;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .btn-custom:hover {
+            background-color: #357EC7;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- NavBar -->
+    <div style="background-color: #2D4356;">
+        <nav class="navbar navbar-expand-lg" style="background-color: #2D4356;">
+            <div class="container">
+                <a class="navbar-brand" href="#">
+                    <span style="margin-right: 10px"></span>Eye Disease Detection
+                </a>
+                <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+                    <ul class="navbar-nav mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link" href="/faq">FAQ</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/">Home</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    {% include '_disclaimer.html' %}
+    </div>
+    <!-- NavBar -->
+
+    <!-- FAQ Section -->
+    <div class="container faq-container">
+        <h1 style="text-align: center; margin-bottom: 30px;">Frequently Asked Questions</h1>
+
+        <!-- FAQ 1 -->
+        <div class="faq-question" onclick="toggleFAQ('faq1')">
+            <div class="faq-number">1</div>
+            <div class="faq-text">What are the common symptoms of eye diseases?</div>
+            <div class="dropdown-icon">▼</div>
+        </div>
+        <div id="faq1" class="faq-answer">
+            Common symptoms of eye diseases include blurred vision, difficulty seeing at night, eye pain or discomfort, redness, itching, watering of the eyes, and seeing halos around lights.
+        </div>
+
+        <!-- FAQ 2 -->
+        <div class="faq-question" onclick="toggleFAQ('faq2')">
+            <div class="faq-number">2</div>
+            <div class="faq-text">How are eye diseases diagnosed?</div>
+            <div class="dropdown-icon">▼</div>
+        </div>
+        <div id="faq2" class="faq-answer">
+            Eye diseases can be diagnosed through a comprehensive eye examination, including visual acuity tests, dilated eye exams, tonometry (eye pressure measurement), and imaging tests such as optical coherence tomography (OCT) or fundus photography.
+        </div>
+
+        <!-- FAQ 3 -->
+        <div class="faq-question" onclick="toggleFAQ('faq3')">
+            <div class="faq-number">3</div>
+            <div class="faq-text">What are the treatment options for common eye diseases?</div>
+            <div class="dropdown-icon">▼</div>
+        </div>
+        <div id="faq3" class="faq-answer">
+            Treatment options for common eye diseases may include prescription eyeglasses or contact lenses, medication (such as eye drops), laser therapy, surgery (such as cataract surgery or corneal transplant), or lifestyle changes.
+        </div>
+
+        <!-- FAQ 4 -->
+        <div class="faq-question" onclick="toggleFAQ('faq4')">
+            <div class="faq-number">4</div>
+            <div class="faq-text">Are all eye diseases preventable?</div>
+            <div class="dropdown-icon">▼</div>
+        </div>
+        <div id="faq4" class="faq-answer">
+            While some eye diseases may have genetic or unavoidable risk factors, many can be prevented or their progression slowed through regular eye exams, wearing protective eyewear, maintaining a healthy lifestyle, and avoiding habits such as smoking.
+        </div>
+
+        <!-- FAQ 5 -->
+        <div class="faq-question" onclick="toggleFAQ('faq5')">
+            <div class="faq-number">5</div>
+            <div class="faq-text">Can eye diseases lead to permanent vision loss?</div>
+            <div class="dropdown-icon">▼</div>
+        </div>
+        <div id="faq5" class="faq-answer">
+            Yes, some eye diseases, if left untreated or poorly managed, can lead to permanent vision loss. It's important to seek prompt medical attention and follow recommended treatment plans to preserve vision.
+        </div>
+    </div>
+    <!-- FAQ Section -->
+
+    <script>
+        function toggleFAQ(id) {
+            var faq = document.getElementById(id);
+            var question = document.querySelector('#' + id + ' + .faq-question');
+            var allFAQs = document.querySelectorAll('.faq-answer');
+            var allQuestions = document.querySelectorAll('.faq-question');
+
+            allFAQs.forEach(function(item) {
+                if (item.id !== id) {
+                    item.style.display = "none";
+                }
+            });
+
+            allQuestions.forEach(function(item) {
+                if (item !== question) {
+                    item.classList.remove('active');
+                }
+            });
+
+            if (faq.style.display === "block") {
+                faq.style.display = "none";
+                question.classList.remove('active');
+            } else {
+                faq.style.display = "block";
+                question.classList.add('active');
+            }
+        }
+    </script>
+</body>
+
+</html>

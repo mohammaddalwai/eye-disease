@@ -1,0 +1,34 @@
+# Virtual environment (yours is a Windows one and would be useless in Linux)
+env/
+venv/
+.venv/
+
+# Python junk
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# Git, CI, editor and OS files
+.git/
+.github/
+.gitignore
+.DS_Store
+
+# Not needed to run the app
+tests/
+requirements-dev.txt
+README.md
+*.docx
+Dockerfile
+.dockerignore
+_original/
+
+# Training scripts (they contain paths from your own machine)
+augument.py
+build_model.py
+resize.py
+split_test.py
+
+# Unused model in static/ (36 MB) and a leftover test upload
+static/best_model.h5
+static/uploaded_image.jpg

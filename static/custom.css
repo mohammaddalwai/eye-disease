@@ -1,0 +1,134 @@
+body {
+    margin: 0;
+    overflow: hidden;
+    font-family: 'Montserrat', sans-serif; 
+}
+
+.container-fluid {
+    position: relative;
+}
+
+.img-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.img-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.centered-button {
+    margin-top: -40px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1; 
+    text-align: center;
+    align-items: center;
+}
+
+.navbar_logo {
+    font-size: 1.9rem;
+    letter-spacing: 0.5px;
+    word-spacing: 1px;
+    color:#fff;
+    font-weight: 600;
+    text-decoration: none;
+    text-transform: uppercase;
+    display: inline-block;
+    margin-right: 20px;
+    transition: color 0.3s ease-in-out;
+}
+.btn-custom {
+    background-color: #46A7FE;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 6px 12px;
+    font-size: 16px;
+    font-weight: 400;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+.btn-custom:hover {
+    background-color: #357EC7;
+}
+.navbar {
+    background-color: #fff !important;
+}
+
+.normal_text {
+    font-size: 1rem;
+    letter-spacing: 0.5px;
+    word-spacing: 1px;
+    color: #555;
+    font-weight: 100;
+    text-decoration: none;
+    font-style: normal;
+    text-transform: none;
+}
+
+.health-form {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    z-index: 2;
+}
+
+.health-form label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+.health-form input {
+    margin-right: 5px;
+}
+
+.health-form button {
+    margin-top: 10px;
+    background-color: #DE8F5F;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.health-form input[type="radio"] {
+    margin-right: 5px;
+    margin-bottom: 5px;
+}
+
+.health-form input[type="file"] {
+    display: none;
+}
+
+.health-form label.btn {
+    background-color: #DE8F5F;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    display: inline-block;
+}
+
+.health-form label.btn:hover {
+    background-color: #C57668; 
+}
+
+.health-form button:hover {
+    background-color: #C57668;
+}

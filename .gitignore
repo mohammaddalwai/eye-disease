@@ -1,0 +1,17 @@
+env/
+venv/
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.DS_Store
+
+# Personal documents
+*.docx
+
+# Unused 36 MB model and a leftover test upload (could be a dataset image)
+static/best_model.h5
+static/uploaded_image.jpg
+
+# Backups of files before deployment changes
+_original/
